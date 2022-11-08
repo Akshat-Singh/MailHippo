@@ -1,0 +1,53 @@
+version: '2'
+
+networks:
+  test:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/16
+
+services:
+  app: 
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    networks:
+      test:
+        ipv4_address: 172.28.1.1
+    
+
+  format_pull:
+    build:
+      context: ./format_pull
+      dockerfile: Dockerfile
+
+    networks:
+      test:
+        ipv4_address: 172.28.1.2
+
+  scraper:
+    build:
+      context: ./scraper
+      dockerfile: Dockerfile
+
+    networks:
+      test:
+        ipv4_address: 172.28.1.3
+
+  nginx-server:
+    image: nginx
+    container_name: nginx-server
+    ports:
+      - 8080:80
+
+networks:
+  test:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/16
+
+    
+    

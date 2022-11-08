@@ -10,8 +10,8 @@ def hello_world():
 
 @app.route('/communicate')
 def communicate():
-   from_scraper = requests.get("http://127.0.0.1:3000/format_pull")
-   from_format_pull = requests.get("http://127.0.0.1:4000/scraper")
+   from_scraper = requests.get("http://172.28.1.3:4000/scraper")
+   from_format_pull = requests.get("http://172.28.1.2:3000/format_pull")
 
    response = {"from_scraper": str(from_scraper), "from_format_pull": str(from_format_pull)}
    return response
