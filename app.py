@@ -4,9 +4,14 @@ import json
 
 app = Flask(__name__)
 
-@app.route('/')
-def hello_world():
-   return "Hello, World!"
+@app.route('/test')
+def test():
+   response_body = {
+      "name": "Vibodh",
+      "age": "22"
+   }
+
+   return response_body
 
 @app.route('/communicate')
 def communicate():
