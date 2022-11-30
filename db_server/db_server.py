@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_restful import Api, Resource
 import pymongo 
 from flask_pymongo import PyMongo
@@ -11,19 +11,44 @@ api = Api(app)
 mongodb_client = pymongo.MongoClient('mongodb+srv://Akshat-Singh:nFq9o6UCBGTh4RTD@cluster0.oup2qmt.mongodb.net/?retryWrites=true&w=majority')
 db = mongodb_client.get_database('Users')
 
-@app.get("/users")
+@app.route("/users_add")
 def users():
     records = db.Users
 
+
     return jsonify(str(list(records.find())))
 
-@app.get("/formats")
-def formats():
+
+@app.route("/formats_retrieve", methods=['GET'])
+def format_fetch():
     records = db.Formats
 
-    return jsonify(str(list(records.find())))
+    query = request.args.get('org')
+    
+    response = records.find_one({"org_id": query})
 
-@app.get("/scraper")
+    if response:
+        syntax = response['format']
+    else:
+        syntax = "404"
+
+    return syntax
+
+
+
+@app.route("/formats_publish", methods=['GET'])
+def format_add():
+    records = db.Formats
+
+    organization = request.args.get('org')
+    syntax = request.args.get('format')
+
+    records.insert_one({"org_id": organization, "format": syntax})
+
+    return "200"
+
+
+@app.route("/scraper_add")
 def scraper():
     records = db.Scraper
 

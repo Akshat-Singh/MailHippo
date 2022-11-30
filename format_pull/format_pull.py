@@ -1,6 +1,7 @@
 from flask import Flask, redirect, url_for, render_template, request, jsonify
 from flask_restful import Api, Resource
 from format_pull_helper import scrape_format
+import requests
 
 app = Flask(__name__)
 #api = Api(app)
@@ -12,14 +13,23 @@ app = Flask(__name__)
 #api.add_resource(format_pull, "/format_pull")
 
 @app.route('/pull', methods=['POST', 'GET'])
-def find_people():
+def pull_format():
     if request.method == 'GET':
         organization = request.args.get('org')
-        print(f"Organization: {organization}")
+        response = str(requests.get("http://127.0.0.1:2000/formats_retrieve?org=" + organization).text)
 
-        return scrape_format(organization) 
+        print(response)
+
+        if response == "404":
+            pulled_format = scrape_format(organization)
+            requests.get("http://127.0.0.1:2000/formats_publish?org=" + organization + "&format=" + pulled_format["format"])
+
+            return pulled_format
+
+        else:
+            return response   
         
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=3000)
+    app.run(host='0.0.0.0', port=3000, debug=True)
