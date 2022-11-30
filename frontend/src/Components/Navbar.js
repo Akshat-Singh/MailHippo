@@ -17,9 +17,9 @@ export default class NavbarComp extends Component {
         return (
             <Router> 
                 <div>
-                    <Navbar bg="light" expand="lg">
+                    <Navbar style={{backgroundColor: 'rgba(255, 255, 255, 0.9)'}}>
                         <Container>
-                            <Navbar.Brand href="#home">Welcome to Mail Hippo! </Navbar.Brand>
+                            <Navbar.Brand href="#home"><span style={{color: "#283592", fontSize: "150%"}}>Mail</span><span style={{color: "#E01E85", fontSize: "150%"}}>Hippo</span></Navbar.Brand>
                             <Navbar.Toggle aria-controls="basic-navbar-nav" />
                             <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="me-auto">
