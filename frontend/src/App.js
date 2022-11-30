@@ -1,4 +1,10 @@
 import React, {useState, useEffect} from 'react'
+import './App.css'
+import Button from 'react-bootstrap/Button'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import DropdownButton from 'react-bootstrap/DropdownButton'
+import Dropdown from 'react-bootstrap/Dropdown'
+import NavbarComp from './Components/Navbar.js'
 
 function App() {
 
@@ -16,7 +22,9 @@ function App() {
   }, [])
 
   return (
-    <div>
+    <div className = "App">
+      <NavbarComp />
+
 
     </div>
   )
