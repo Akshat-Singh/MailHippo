@@ -10,16 +10,16 @@ function App() {
 
   const [date, setData] = useState([{}])
 
-  useEffect (() => {
-    fetch("/test").then(
-      res => res.text()
-    ).then(
-      data => {
-        setData(data)
-        console.log(data)
-      }
-    )
-  }, [])
+  // useEffect (() => {
+  //   fetch("/test").then(
+  //     res => res.text()
+  //   ).then(
+  //     data => {
+  //       setData(data)
+  //       console.log(data)
+  //     }
+  //   )
+  // }, [])
 
   return (
     <div className = "App">

@@ -1,9 +1,11 @@
 from flask import Flask, redirect, url_for, render_template, request, jsonify
 from flask_restful import Api, Resource
 from format_pull_helper import scrape_format
+from flask_cors import CORS
 import requests
 
 app = Flask(__name__)
+CORS(app)
 #api = Api(app)
 
 """class format_pull(Resource):
@@ -16,13 +18,14 @@ app = Flask(__name__)
 def pull_format():
     if request.method == 'GET':
         organization = request.args.get('org')
-        response = str(requests.get("http://127.0.0.1:2000/formats_retrieve?org=" + organization).text)
+        print("Reached here")
+        response = str(requests.get("http://172.28.1.4:3001/formats_retrieve?org=" + organization).text)
 
         print(response)
 
         if response == "404":
             pulled_format = scrape_format(organization)
-            requests.get("http://127.0.0.1:2000/formats_publish?org=" + organization + "&format=" + pulled_format["format"])
+            requests.get("http://172.28.1.4:3001/formats_publish?org=" + organization + "&format=" + pulled_format["format"])
 
             return pulled_format
 

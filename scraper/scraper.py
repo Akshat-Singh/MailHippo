@@ -2,13 +2,7 @@ from flask import Flask, redirect, url_for, render_template, request
 from flask_restful import Api, Resource
 
 app = Flask(__name__)
-api = Api(app)
-
-
-@app.route('/', methods=['POST', 'GET'])
-def find_people():
-    if request.method == 'POST':
-        user = request.form[""]   
+api = Api(app)  
 
 
 """class scraper(Resource):

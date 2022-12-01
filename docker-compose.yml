@@ -36,18 +36,28 @@ services:
       test:
         ipv4_address: 172.28.1.3
 
+  db_server:
+    build:
+      context: ./db_server
+      dockerfile: Dockerfile
+
+    networks:
+      test:
+        ipv4_address: 172.28.1.4
+
+  frontend:
+    build: ./frontend
+    container_name: frontend_c
+    ports: 
+      - '3000:3000'
+    stdin_open: true
+    tty: true
+
   nginx-server:
     image: nginx
     container_name: nginx-server
     ports:
       - 8080:80
-
-networks:
-  test:
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.28.0.0/16
 
     
     
