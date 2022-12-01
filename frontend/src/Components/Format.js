@@ -18,9 +18,10 @@ export default function Format() {
             axios.get('http://172.28.1.2:3000/pull?org=' + e)
                 .then(res => {
                     console.log(res);
-                    console.log(res.data);
+                    console.log(res.data.example);
+                    console.log(res.data.format);
 
-                    setFormat(res.data);
+                    setFormat(res.data.format);
                 })
 
         }
@@ -39,9 +40,10 @@ export default function Format() {
             axios.get('http://172.28.1.2:3000/pull?org=' + company)
                 .then(res => {
                     console.log(res);
-                    console.log(res.data);
+                    console.log(res.data.example);
+                    console.log(res.data.format);
 
-                    setFormat(res.data);
+                    setFormat(res.data.format);
                 })
         }
 
