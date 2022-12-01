@@ -25,7 +25,7 @@ def pull_format():
 
         if response == "404":
             pulled_format = scrape_format(organization)
-            requests.get("http://172.28.1.4:3001/formats_publish?org=" + organization + "&format=" + pulled_format["format"])
+            requests.get("http://172.28.1.4:3001/formats_publish?org=" + organization + "&format=" + pulled_format["format"] + "&example" + pulled_format["example"])
 
             return pulled_format
 

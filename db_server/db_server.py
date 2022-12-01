@@ -28,7 +28,7 @@ def format_fetch():
     response = records.find_one({"org_id": query})
 
     if response:
-        syntax = response['format']
+        syntax = {"format": response['format'], "example": response['example']}
     else:
         syntax = "404"
 
@@ -42,8 +42,9 @@ def format_add():
 
     organization = request.args.get('org')
     syntax = request.args.get('format')
+    example = request.args.get('example')
 
-    records.insert_one({"org_id": organization, "format": syntax})
+    records.insert_one({"org_id": organization, "format": syntax, "example": example})
 
     return "200"
 
