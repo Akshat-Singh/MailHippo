@@ -1,15 +1,40 @@
-from flask import Flask, redirect, url_for, render_template, request
+from flask import Flask, redirect, url_for, render_template, request, jsonify
 from flask_restful import Api, Resource
+from scraper_helper import scrape_person
+from flask_cors import CORS
+import requests
 
 app = Flask(__name__)
-api = Api(app)  
+CORS(app)
 
 
-"""class scraper(Resource):
-    def get(self):
-        return {"data": "scraper"}
+@app.route('/scrape', methods=['POST', 'GET'])
+def pull_person():
+    if request.method == 'GET':
+        organization = request.args.get('org')
+        position = request.args.get('pos')
+        print("Reached here")
+        #response = str(requests.get("http://172.28.1.4:3001/person_retrieve?org=" + organization).text)
 
-api.add_resource(scraper, "/scraper")"""
+        # print(response)
+
+        if True:
+            pulled_names = scrape_person(organization, position)
+
+            if len(pulled_names) == 0:
+                return "No viable results found!"
+
+            else:
+                return pulled_names 
+
+            # requests.get("http://172.28.1.4:3001/formats_publish?org=" + organization + "&format=" + pulled_format["format"] + "&example=" + pulled_format["example"])
+
+            return pulled_format
+
+        else:
+            return None   
+        
+
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=4000)
+    app.run(host='0.0.0.0', port=8000, debug=True)
