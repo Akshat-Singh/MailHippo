@@ -25,11 +25,11 @@ def pull_person():
                 return "No viable results found!"
 
             else:
-                return pulled_names 
+                 
+                for item in pulled_names:
+                    requests.get("http://172.28.1.4:3001/people_publish?org=" + item["Company"] + "&pos=" + item["Position"] + "&name=" + item["Name"])
 
-            # requests.get("http://172.28.1.4:3001/formats_publish?org=" + organization + "&format=" + pulled_format["format"] + "&example=" + pulled_format["example"])
-
-            return pulled_format
+                return pulled_names
 
         else:
             return None   

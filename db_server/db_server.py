@@ -11,6 +11,8 @@ api = Api(app)
 mongodb_client = pymongo.MongoClient('mongodb+srv://Akshat-Singh:nFq9o6UCBGTh4RTD@cluster0.oup2qmt.mongodb.net/?retryWrites=true&w=majority')
 db = mongodb_client.get_database('Users')
 
+dbc = mongodb_client.get_database('Data_by_Company')
+
 @app.route("/users_add")
 def users():
     records = db.Users
@@ -45,6 +47,20 @@ def format_add():
     example = request.args.get('example')
 
     records.insert_one({"org_id": organization, "format": syntax, "example": example})
+
+    return "200"
+
+
+
+@app.route("/people_publish", methods=['GET'])
+def format_add():
+    records = dbc.Consulting
+
+    organization = request.args.get('org')
+    position = request.args.get('pos')
+    name = request.args.get('name')
+
+    records.insert_one({"org": organization, "position": position, "name": name})
 
     return "200"
 

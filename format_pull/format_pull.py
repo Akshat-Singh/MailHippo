@@ -6,13 +6,7 @@ import requests
 
 app = Flask(__name__)
 CORS(app)
-#api = Api(app)
 
-"""class format_pull(Resource):
-    def get(self):
-        return {"organization": "format"}"""
-
-#api.add_resource(format_pull, "/format_pull")
 
 @app.route('/pull', methods=['POST', 'GET'])
 def pull_format():
