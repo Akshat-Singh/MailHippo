@@ -52,6 +52,19 @@ def format_add():
     return "200"
 
 
+@app.route("/person_publish", methods=['GET'])
+def person_add():
+    records = db.Scraper
+
+    organization = request.args.get('org')
+    name = request.args.get('name')
+    position = request.args.get('pos')
+
+    records.insert_one({"org": organization, "name": name, "pos": position})
+
+    return "200"
+
+
 @app.route("/scraper_add")
 def scraper():
     records = db.Scraper
