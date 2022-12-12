@@ -13,7 +13,7 @@ export default function Format() {
 
         const handleSelect = (e) => {
             console.log(e);
-            setValue(e)
+            setValue(e);
 
             axios.get('http://172.28.1.2:3000/pull?org=' + e)
                 .then(res => {
@@ -73,7 +73,7 @@ export default function Format() {
         </Button>
         </Form>
 
-        <p> The email format of the company you have queried is {format} </p>
+        <p> The email format of the company you have queried is <span style={{color: "#E01E85", fontSize: "150%"}}> {format} </span> </p>
 
             </header>
 
