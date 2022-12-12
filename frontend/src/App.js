@@ -56,7 +56,7 @@ function App() {
       <div>
       <NavbarComp />
 
-      <h3> {user && <div> Welcome to Mail Hippo! </div>} {user.name} </h3>
+      <h3> {user && <div> Welcome to MailHippo! </div>} {user.name} </h3>
 
       </div>
 

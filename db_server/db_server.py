@@ -23,6 +23,7 @@ def users():
 
 @app.route("/formats_retrieve", methods=['GET'])
 def format_fetch():
+    print("Query received")
     records = db.Formats
 
     query = request.args.get('org')
@@ -47,20 +48,6 @@ def format_add():
     example = request.args.get('example')
 
     records.insert_one({"org_id": organization, "format": syntax, "example": example})
-
-    return "200"
-
-
-
-@app.route("/people_publish", methods=['GET'])
-def format_add():
-    records = dbc.Consulting
-
-    organization = request.args.get('org')
-    position = request.args.get('pos')
-    name = request.args.get('name')
-
-    records.insert_one({"org": organization, "position": position, "name": name})
 
     return "200"
 
