@@ -2,11 +2,15 @@ from flask import Flask, jsonify, request
 from flask_restful import Api, Resource
 import pymongo 
 from flask_pymongo import PyMongo
+from flask_cors import CORS
+
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = 'ad4c4c9c60e6ebf95603d99d9f1ca5df705c0f93'
 app.config["MONGO_URI"] = 'mongodb+srv://Akshat-Singh:nFq9o6UCBGTh4RTD@cluster0.oup2qmt.mongodb.net/?retryWrites=true&w=majority'
 api = Api(app)
+CORS(app)
+
 
 mongodb_client = pymongo.MongoClient('mongodb+srv://Akshat-Singh:nFq9o6UCBGTh4RTD@cluster0.oup2qmt.mongodb.net/?retryWrites=true&w=majority')
 db = mongodb_client.get_database('Users')
@@ -63,6 +67,13 @@ def person_add():
     records.insert_one({"org": organization, "name": name, "pos": position})
 
     return "200"
+
+
+@app.route("/get_comp_list", methods=['GET'])
+def return_comp_list():
+    records = db.Scraper
+
+    return records.distinct('org')
 
 
 @app.route("/scraper_add")
