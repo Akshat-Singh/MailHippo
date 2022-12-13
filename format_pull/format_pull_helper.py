@@ -35,7 +35,7 @@ def scrape_format(org):
                 break
     
     if not found:
-        return "Could not find email format for the firm"
+        return "404"
         
 
     url = final

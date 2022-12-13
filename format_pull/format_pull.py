@@ -20,6 +20,10 @@ def pull_format():
 
         if response == "404":
             pulled_format = scrape_format(organization)
+
+            if pulled_format == "404":
+                return "404"
+
             #requests.get("http://172.28.1.4:3001/formats_publish?org=" + pulled_format["org"] + "&format=" + pulled_format["format"] + "&example=" + pulled_format["example"])
             final_name = pulled_format["org"].replace("&", "and")
             final_format = pulled_format["format"]

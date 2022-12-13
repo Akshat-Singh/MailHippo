@@ -17,6 +17,7 @@ import EmailSend from "./Components/EmailSend.js";
 import Login from "./Components/Login.js";
 import Navbar from "./Components/Navbar.js";
 import Footer from "./Components/Footer.js";
+import DisplayResults from './Components/DisplayResults.js'
 
 import { GlobalStyle } from './GlobalStyle';
 
@@ -97,6 +98,8 @@ function App() {
           <Route path = "/format" element = {<Format />}/>
 
           <Route path = "/emailsend" element = {<EmailSend />}/>
+
+          <Route path = "/fetch_details" element = {<DisplayResults />}/>
         </Routes>
 
         <Footer />
