@@ -14,7 +14,8 @@ def pull_person():
         organization = request.args.get('org')
         position = request.args.get('pos')
         print("Reached here")
-        #response = str(requests.get("http://172.28.1.4:3001/person_retrieve?org=" + organization).text)
+        
+        # response = str(requests.get("http://172.28.1.4:3001/person_retrieve?org=" + organization).text)
 
         # print(response)
 

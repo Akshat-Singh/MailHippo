@@ -7,10 +7,12 @@ import {
     Link
 } from "react-router-dom";
 
+
 import Home from "./Home.js";
 import Format from "./Format.js";
 import Scraper from "./Scraper.js";
 import EmailSend from "./EmailSend.js";
+import DisplayResults from "./DisplayResults.js"
 
 export default class NavbarComp extends Component {
     render() {
@@ -42,6 +44,8 @@ export default class NavbarComp extends Component {
                         <Route path = "/format" element = {<Format />}/>
 
                         <Route path = "/emailsend" element = {<EmailSend />}/>
+
+                        <Route path = "/fetch_details" element = {<DisplayResults />}/>
                     </Routes>
                 </div>
             </Router>
