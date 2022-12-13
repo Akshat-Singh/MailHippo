@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect } from 'react';
 import axios from 'axios';
 import { CSVLink, CSVDownload } from "react-csv";
-
+import ReactLoading from "react-loading";
 
 
 export default function App() {
@@ -38,7 +38,15 @@ export default function App() {
       }, []);
 
     
-    if (CSV.length === 0) return (<h1>Loading...</h1>)
+    if (CSV.length === 0) return (
+        <div style={{alignItems: 'center', justifyContent: 'center', flex: '1'}}>
+            <ReactLoading type="spin" style={{margin: "0 auto", position: "relative", fill: "rgb(224, 30, 133)", height: "100px", width: "50px"}}/>
+            <div style={{margin: "0 auto", position: "relative", color: "#283592"}}>Generating Email Addresses</div>
+        </div>
+    
+        )
+
+
     return (
       <div>
         <CSVLink filename={org + "_" + pos + "by MailHippo"} data={CSV}>Download email IDs from {org}</CSVLink>;
