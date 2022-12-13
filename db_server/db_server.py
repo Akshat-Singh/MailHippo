@@ -64,9 +64,24 @@ def person_add():
     name = request.args.get('name')
     position = request.args.get('pos')
 
-    records.insert_one({"org": organization, "name": name, "pos": position})
+    try:
+        records.insert_one({"org": organization, "name": name, "pos": position})
+    except Exception as e:
+        print(f"Insert exception: {e}")
 
     return "200"
+
+
+@app.route("/people_retrieve", methods=['GET'])
+def people_fetch():
+    print("Query received")
+    records = db.Scraper
+
+    organization = request.args.get('org')
+    position = request.args.get('pos')
+    
+    response = records.find({"org": organization}, {"_id": False})
+    return list(response)
 
 
 @app.route("/get_comp_list", methods=['GET'])
