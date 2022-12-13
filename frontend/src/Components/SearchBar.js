@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import '../static/SearchBar.css'
 
@@ -31,6 +32,11 @@ function SearchBar() {
       setSuggestions(entries.sort().filter(entry => regex.test(entry)));
     }
   };
+
+  let navigate = useNavigate(); 
+  const handleSubmit = (e) =>{ 
+    navigate('/fetch_details?org=' + searchTerm + '&pos=' + searchPos);
+  }
   
   const handlePosChange = (event) => {
     event.preventDefault();
@@ -64,7 +70,7 @@ function SearchBar() {
       <ul>
       {suggestions.map((suggest, index) => {
         return(
-          <li><button onClick={(e) => handleOnClick(suggest)}>{suggest}</button></li>
+          <li className="li-suggest"><button className="btn-option" onClick={(e) => handleOnClick(suggest)}>{suggest}</button></li>
         )
       })}
       </ul>
@@ -77,7 +83,7 @@ function SearchBar() {
       onChange={handlePosChange}
     />
 
-    <button>
+    <button className="btn-option" onClick={(e) => handleSubmit(e)}>
       Initiate Search
     </button>
 

@@ -12,16 +12,51 @@
     color: white; 
     font-size: 15px; 
     position: relative; 
+    margin-top: 1%;
 }
 
 .search-autocomplete:focus {
     border-color: #eb34b1;
     box-shadow: 0 0 8px #eb34b1; 
     background-color: rgba(255, 255, 255, 0.6); 
+    color: black; 
 }
 
+.btn-option {
+  background-color: #EA4C89;
+  border-radius: 2px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 30px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0.25%;
+  outline: none;
+  padding: 5px 5px 5px 5px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn-option:hover,
+.btn-option:focus {
+  background-color: #F082AC;
+}
+
+
 ::placeholder {
-    color: rgb(162, 155, 155);   
+    color: rgb(255, 255, 255);   
 }
 
 .search_results {
@@ -53,4 +88,8 @@
 
 .list-item a:hover {
     background-color: #eb34b1; 
+}
+
+.li-suggest {
+    list-style-type: none;
 }
