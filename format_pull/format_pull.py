@@ -14,7 +14,7 @@ def pull_format():
         organization = request.args.get('org')
         print("Reached here")
         #response = str(requests.get("http://172.28.1.4:3001/formats_retrieve?org=" + organization).text)
-        response = str(requests.get("http://localhost:3001/formats_retrieve?org=" + organization).text)
+        response = str(requests.get("http://172.28.1.4:3001/formats_retrieve?org=" + organization).text)
 
         print(response)
 
@@ -28,7 +28,7 @@ def pull_format():
             final_name = pulled_format["org"].replace("&", "and")
             final_format = pulled_format["format"]
             final_example = pulled_format["example"]
-            requests.get(f'http://localhost:3001/formats_publish?org={final_name}&format={final_format}&example={final_example}')
+            requests.get(f'http://172.28.1.4:3001/formats_publish?org={final_name}&format={final_format}&example={final_example}')
 
             return pulled_format
 

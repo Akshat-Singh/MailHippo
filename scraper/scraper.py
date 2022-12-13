@@ -30,7 +30,7 @@ def pull_person():
                     org = item["Company"].replace("&", "and")
                     pos = item["Position"].replace("&", "and")
                     name = item["Name"].replace("&", "and")
-                    requests.get("http://localhost:3001/person_publish?org=" + org + "&pos=" + pos + "&name=" + name)
+                    requests.get("http://172.28.1.4:3001/person_publish?org=" + org + "&pos=" + pos + "&name=" + name)
 
                 return pulled_names
 

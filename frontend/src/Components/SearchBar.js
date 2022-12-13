@@ -13,9 +13,9 @@ function SearchBar() {
 
   // Use axios to send a request to the backend to retrieve a list of entries
   useEffect(() => {
-    set_db_server_addr("http://127.0.0.1:3001")
+    set_db_server_addr("http://172.28.1.4:3001")
     
-    axios.get("http://127.0.0.1:3001" + "/get_comp_list")
+    axios.get("http://172.28.1.4:3001" + "/get_comp_list")
       .then(res => {
         setEntries(res.data)
         console.log(res.data)
