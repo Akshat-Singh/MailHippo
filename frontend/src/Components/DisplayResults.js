@@ -14,11 +14,11 @@ export default function App() {
 
     useEffect(() => {        
         /* First, pull data from the scraper */
-        axios.get("http://127.0.0.1:8000" + "/scrape?org=" + org + "&pos=" + pos)
+        axios.get("http://172.28.1.3:8000" + "/scrape?org=" + org + "&pos=" + pos)
           .then(res => {
             console.log(res.data)
             /* Then pull the email-format */
-            axios.get("http://127.0.0.1:3500" + "/pull?org=" + org)
+            axios.get("http://172.28.1.2:3500" + "/pull?org=" + org)
                 .then(resp => {
                     const CSVData = []
                     CSVData.push(['Name', 'Position', 'Organization', 'Email'])

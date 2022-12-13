@@ -3,3 +3,4 @@ requests===2.25.1
 pymongo[srv]
 Flask-PyMongo
 flask-restful
+flask_cors
