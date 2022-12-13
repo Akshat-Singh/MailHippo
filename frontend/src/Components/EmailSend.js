@@ -80,7 +80,9 @@ function SearchBar() {
             body: body
         }
         
-        axios.post("http://127.0.0.1:7500" + "/send_mail", {data: payload})
+        console.log(payload)
+
+        axios.post("http://127.0.0.1:7500/send_email", payload)
             .then(res => {
                 alert('Email Sent!')
             });
@@ -123,7 +125,7 @@ function SearchBar() {
         onChange={(e) => handleChangeBody(e)}
     />
 
-    <button className="btn-option" onSubmit={(e) => handleSubmit(e)}>
+    <button className="btn-option" onClick={(e) => handleSubmit(e)}>
       Initiate Search
     </button>
 
