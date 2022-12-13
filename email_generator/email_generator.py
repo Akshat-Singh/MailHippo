@@ -7,19 +7,12 @@ app = Flask(__name__)
 CORS(app)
 
 
-@app.route('/generate_email', methods=['POST', 'GET'])
-def generate_email():
-    email_format = request.args.get('format')
-    name = request.args.get('name').lower()
-    first, last = name.split(' ')
-    f, l = first[0], last[0]
-    
-    email_address = email_format.replace("{first}", first)
-    email_address = email_address.replace("{last}", last)
-    email_address = email_address.replace("{f}", f)
-    email_address = email_address.replace("{l}", l)
-
-    return email_address
+@app.route('/send_email', methods=['POST'])
+def send_email():
+    email_addresses = request.form['emails'].split('; ')
+    subject = request.form['subject']
+    body = request.form['body']
+    return 200
 
     
 

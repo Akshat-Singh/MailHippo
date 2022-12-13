@@ -73,6 +73,19 @@ function SearchBar() {
         reader.readAsText(file);
     };
 
+    const handleSubmit = (e) => {
+        const payload = {
+            email_string: email,
+            sub: subject,
+            body: body
+        }
+        
+        axios.post("http://127.0.0.1:7500" + "/send_mail", {data: payload})
+            .then(res => {
+                alert('Email Sent!')
+            });
+    };
+
   return (
     <div style={{ margin: "auto", top: "20%", width: "50%", display: "block", alignItems: "center" }}>
     <input className='search-autocomplete'
@@ -110,7 +123,7 @@ function SearchBar() {
         onChange={(e) => handleChangeBody(e)}
     />
 
-    <button className="btn-option">
+    <button className="btn-option" onSubmit={(e) => handleSubmit(e)}>
       Initiate Search
     </button>
 
