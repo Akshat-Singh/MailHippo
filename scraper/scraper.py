@@ -3,6 +3,7 @@ from flask_restful import Api, Resource
 from scraper_helper import scrape_person
 from flask_cors import CORS
 import requests
+import json
 
 app = Flask(__name__)
 CORS(app)
@@ -15,10 +16,9 @@ def pull_person():
         position = request.args.get('pos')
         print("Reached here")
         
-        response = requests.get("http://localhost:3001/people_retrieve?org=" + organization).text
-        print(response)
+        response = requests.get("http://localhost:3001/people_retrieve?org=" + organization + "&pos=" + position).text
         
-        if not len(response):
+        if response == '404':
             pulled_names = scrape_person(organization, position)
 
             if len(pulled_names) == 0:
@@ -34,6 +34,8 @@ def pull_person():
                 return pulled_names
 
         else:
+            response = json.loads(response)
+            print(response)
             return response 
         
 

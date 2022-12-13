@@ -80,8 +80,14 @@ def people_fetch():
     organization = request.args.get('org')
     position = request.args.get('pos')
     
-    response = records.find({"org": organization}, {"_id": False})
-    return list(response)
+    response = records.find({"org": organization, "pos": position}, {"_id": False})
+
+    response = list(response)
+    if len(response):
+        return list(response)
+    else:
+        return "404"
+
 
 
 @app.route("/get_comp_list", methods=['GET'])
