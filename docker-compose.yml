@@ -52,6 +52,9 @@ services:
       - '3000:3000'
     stdin_open: true
     tty: true
+    volumes:
+      - /app/node_modules
+      - .:/app
 
   nginx-server:
     image: nginx

@@ -11,11 +11,12 @@ import Home from "./Home.js";
 import Format from "./Format.js";
 import Scraper from "./Scraper.js";
 import EmailSend from "./EmailSend.js";
+import Login from "./Login.js";
 
 export default class NavbarComp extends Component {
     render() {
         return (
-            <Router> 
+             
                 <div>
                     <Navbar style={{backgroundColor: 'rgba(255, 255, 255, 0.9)'}}>
                         <Container>
@@ -32,19 +33,7 @@ export default class NavbarComp extends Component {
                         </Container>
                     </Navbar>  
                 </div>
-
-                <div>
-                    <Routes>
-                        <Route path="/home" element = {<Home />}/>
-
-                        <Route path = "/scraper" element = {<Scraper />}/>
-
-                        <Route path = "/format" element = {<Format />}/>
-
-                        <Route path = "/emailsend" element = {<EmailSend />}/>
-                    </Routes>
-                </div>
-            </Router>
+            
         )
     }
 }
