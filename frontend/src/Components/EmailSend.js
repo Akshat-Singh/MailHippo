@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import Papa from "papaparse";
 import axios from 'axios';
-import '../static/SearchBar.css'
+import '../static/EmailSend.css'
 
 function SearchBar() {
     const [email, setEmail] = useState("")
@@ -85,11 +85,11 @@ function SearchBar() {
     <div>You can also upload a MailHippo CSV &#40;or any CSV as long as it has a column named 'Email'&#41;</div>
     <input
         onChange={(e) => handleFileChange(e)}
-        id="csvInput"
+        className="csvInput"
         name="file"
         type="File"
     />
-    <button onClick={(e) => handleParse(e)} id="parseButton">Parse CSV</button>   
+    <button className="btn-option" onClick={(e) => handleParse(e)} id="parseButton">Parse CSV</button>   
 
     <div style={{ marginTop: "3rem" }}>
         {error ? error : data.map((col, idx) => <div key={idx}>{col}</div>)}
