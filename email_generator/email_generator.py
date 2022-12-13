@@ -1,6 +1,7 @@
 from flask import Flask, redirect, url_for, render_template, request, jsonify
 from flask_restful import Api, Resource
 from flask_cors import CORS
+from email_generator_helper import email_sender
 import requests
 import json
 
@@ -18,10 +19,16 @@ def send_email():
     emails = data['email_string'].split('; ')
     subject = data['sub']
     body = data['body']
+    user_email = data['user_email']
+    password = data["password"]
 
     print(emails)
     print(subject)
     print(body)
+    print(user_email)
+
+    email_sender(emails, subject, body, user_email, password)
+
     return "200"
 
     

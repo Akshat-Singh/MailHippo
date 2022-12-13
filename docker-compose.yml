@@ -45,6 +45,15 @@ services:
       test:
         ipv4_address: 172.28.1.4
 
+  email_generator:
+    build:
+      context: ./email_generator
+      dockerfile: Dockerfile
+
+    networks:
+      test:
+        ipv4_address: 172.28.1.5
+
   frontend:
     build: ./frontend
     container_name: frontend_c

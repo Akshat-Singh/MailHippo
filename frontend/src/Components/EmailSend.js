@@ -8,6 +8,8 @@ function SearchBar() {
     const [email, setEmail] = useState("")
     const [subject, setSubject] = useState("")
     const [body, setBody] = useState("")
+    const [userEmail, setUserEmail] = useState("")
+    const [password, setPassword] = useState("")
 
     const [data, setData] = useState([]);
     const [error, setError] = useState("");
@@ -22,6 +24,14 @@ function SearchBar() {
     const handleChangeBody = (e) => {
         setBody(e.target.value)
     }
+    const handleChangeUserEmail = (e) => {
+        setUserEmail(e.target.value)
+    }
+    const handleChangePassword = (e) => {
+        setPassword(e.target.value)
+    }
+
+
 
     const handleFileChange = (e) => {
         setError("");
@@ -77,12 +87,14 @@ function SearchBar() {
         const payload = {
             email_string: email,
             sub: subject,
-            body: body
+            body: body,
+            user_email: userEmail,
+            password: password
         }
         
         console.log(payload)
 
-        axios.post("http://127.0.0.1:7500/send_email", payload)
+        axios.post("http://172.28.1.5:7500/send_email", payload)
             .then(res => {
                 alert('Email Sent!')
             });
@@ -123,6 +135,22 @@ function SearchBar() {
         placeholder='Email Body'
         value={body}
         onChange={(e) => handleChangeBody(e)}
+    />
+
+    <input className = 'search-autocomplete'
+        type = 'text'
+        placeholder = 'EmailID'
+        value = {userEmail}
+        onChange = {(e) => handleChangeUserEmail(e)}
+
+    />
+
+    <input className = 'search-autocomplete'
+        type = 'text'
+        placeholder = 'Password'
+        value = {password}
+        onChange = {(e) => handleChangePassword(e)}
+
     />
 
     <button className="btn-option" onClick={(e) => handleSubmit(e)}>
