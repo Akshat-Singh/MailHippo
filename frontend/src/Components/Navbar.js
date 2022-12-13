@@ -18,7 +18,6 @@ import DisplayResults from "./DisplayResults.js"
 export default class NavbarComp extends Component {
     render() {
         return (
-             
                 <div>
                     <Navbar style={{backgroundColor: 'rgba(255, 255, 255, 0.9)'}}>
                         <Container>
@@ -35,7 +34,6 @@ export default class NavbarComp extends Component {
                         </Container>
                     </Navbar>  
                 </div>
-            
         )
     }
 }
