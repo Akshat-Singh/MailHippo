@@ -7,11 +7,13 @@ import {
     Link
 } from "react-router-dom";
 
+
 import Home from "./Home.js";
 import Format from "./Format.js";
 import Scraper from "./Scraper.js";
 import EmailSend from "./EmailSend.js";
 import Login from "./Login.js";
+import DisplayResults from "./DisplayResults.js"
 
 export default class NavbarComp extends Component {
     render() {

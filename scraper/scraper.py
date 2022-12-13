@@ -14,7 +14,8 @@ def pull_person():
         organization = request.args.get('org')
         position = request.args.get('pos')
         print("Reached here")
-        #response = str(requests.get("http://172.28.1.4:3001/person_retrieve?org=" + organization).text)
+        
+        # response = str(requests.get("http://172.28.1.4:3001/person_retrieve?org=" + organization).text)
 
         # print(response)
 
@@ -25,9 +26,11 @@ def pull_person():
                 return "No viable results found!"
 
             else:
-                 
                 for item in pulled_names:
-                    requests.get("http://172.28.1.4:3001/people_publish?org=" + item["Company"] + "&pos=" + item["Position"] + "&name=" + item["Name"])
+                    org = item["Company"].replace("&", "and")
+                    pos = item["Position"].replace("&", "and")
+                    name = item["Name"].replace("&", "and")
+                    requests.get("http://localhost:3001/person_publish?org=" + org + "&pos=" + pos + "&name=" + name)
 
                 return pulled_names
 

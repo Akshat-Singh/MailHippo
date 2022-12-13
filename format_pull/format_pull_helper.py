@@ -44,6 +44,12 @@ def scrape_format(org):
     FORMAT_soup = bs4.BeautifulSoup(FORMAT_request_result.text, "html.parser")
     unpolished_res = FORMAT_soup.find_all('td')
 
-    res_dict = {"format": unpolished_res[0].getText(), "example": unpolished_res[1].getText()}
+    FORMAT_soup = bs4.BeautifulSoup(FORMAT_request_result.text, "html.parser")
+
+    comp_name = FORMAT_soup.find(lambda tag:tag.name=="h2" and "email formats and examples" in tag.text).getText()
+    comp_name = comp_name.split(" email ")[0]
+
+    res_dict = {"format": unpolished_res[0].getText(), "example": unpolished_res[1].getText(), "org": comp_name}
 
     return(res_dict)
+
