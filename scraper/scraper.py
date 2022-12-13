@@ -15,11 +15,10 @@ def pull_person():
         position = request.args.get('pos')
         print("Reached here")
         
-        # response = str(requests.get("http://172.28.1.4:3001/person_retrieve?org=" + organization).text)
-
-        # print(response)
-
-        if True:
+        response = requests.get("http://localhost:3001/people_retrieve?org=" + organization).text
+        print(response)
+        
+        if not len(response):
             pulled_names = scrape_person(organization, position)
 
             if len(pulled_names) == 0:
@@ -30,12 +29,12 @@ def pull_person():
                     org = item["Company"].replace("&", "and")
                     pos = item["Position"].replace("&", "and")
                     name = item["Name"].replace("&", "and")
-                    requests.get("http://172.28.1.4:3001/person_publish?org=" + org + "&pos=" + pos + "&name=" + name)
+                    requests.get("http://localhost:3001/person_publish?org=" + org + "&pos=" + pos + "&name=" + name)
 
                 return pulled_names
 
         else:
-            return None   
+            return response 
         
 
 

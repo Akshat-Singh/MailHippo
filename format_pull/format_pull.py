@@ -25,7 +25,7 @@ def pull_format():
                 return "404"
 
             #requests.get("http://172.28.1.4:3001/formats_publish?org=" + pulled_format["org"] + "&format=" + pulled_format["format"] + "&example=" + pulled_format["example"])
-            final_name = pulled_format["org"].replace("&", "and")
+            final_name = organization.replace("&", "and")
             final_format = pulled_format["format"]
             final_example = pulled_format["example"]
             requests.get(f'http://172.28.1.4:3001/formats_publish?org={final_name}&format={final_format}&example={final_example}')
