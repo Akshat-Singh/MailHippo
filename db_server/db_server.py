@@ -3,6 +3,7 @@ from flask_restful import Api, Resource
 import pymongo 
 from flask_pymongo import PyMongo
 from flask_cors import CORS
+import json
 
 
 app = Flask(__name__)
@@ -20,9 +21,17 @@ dbc = mongodb_client.get_database('Data_by_Company')
 @app.route("/users_add")
 def users():
     records = db.Users
+    
+    data = json.loads(request.data.decode('utf-8'))
+    print(data)
+    
+    email = data['email']
+    name = data['name']
+    given_name = data['given_name']
 
+    db.insert_one({"email": email, "name": name, "given_name": given_name})
 
-    return jsonify(str(list(records.find())))
+    return "200"
 
 
 @app.route("/formats_retrieve", methods=['GET'])

@@ -12,6 +12,19 @@ export default function Login() {
         var userObject = jwt_decode(response.credential);
         console.log(userObject);
         setUser(userObject);
+
+        const payload = {
+          email: userObject["email"],
+          name: userObject["name"],
+          given_name: userObject["given_name"]
+        }
+
+        axios.get("http://172.28.1.4:3001" + "/user_add", payload)
+          .then(res => {
+          setEntries(res.data)
+          console.log(res.data)
+        });
+
         document.getElementById("signInDiv").hidden = true;
     }
 
