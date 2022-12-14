@@ -20,10 +20,6 @@ export default function Login() {
         }
 
         axios.get("http://172.28.1.4:3001" + "/user_add", payload)
-          .then(res => {
-          setEntries(res.data)
-          console.log(res.data)
-        });
 
         document.getElementById("signInDiv").hidden = true;
     }

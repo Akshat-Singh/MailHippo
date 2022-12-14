@@ -29,7 +29,7 @@ def users():
     name = data['name']
     given_name = data['given_name']
 
-    db.insert_one({"email": email, "name": name, "given_name": given_name})
+    records.insert_one({"email": email, "name": name, "given_name": given_name})
 
     return "200"
 
