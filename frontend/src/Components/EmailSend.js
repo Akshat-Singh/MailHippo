@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Papa from "papaparse";
 import axios from 'axios';
 import '../static/EmailSend.css'
+import { Button } from "../styles/Button.js";
 
 function SearchBar() {
     const [email, setEmail] = useState("")
@@ -102,6 +103,9 @@ function SearchBar() {
 
   return (
     <div style={{ margin: "auto", top: "20%", width: "50%", display: "block", alignItems: "center" }}>
+
+    <center>
+
     <input className='search-autocomplete'
       type='text'
       placeholder='Email Addresses (seperated by ";")'
@@ -109,14 +113,20 @@ function SearchBar() {
       onChange={(e) => handleChangeEmail(e)}
       href="/"
     />
-    <div>You can also upload a MailHippo CSV &#40;or any CSV as long as it has a column named 'Email'&#41;</div>
+    <br />
+    <div> <h3> You can also upload a MailHippo CSV &#40;or any CSV as long as it has a column named 'Email'&#41; </h3></div>
+
+    <br />
+
     <input
         onChange={(e) => handleFileChange(e)}
         className="csvInput"
         name="file"
         type="File"
     />
-    <button className="btn-option" onClick={(e) => handleParse(e)} id="parseButton">Parse CSV</button>   
+    {/* <button className="btn-option" onClick={(e) => handleParse(e)} id="parseButton">Parse CSV</button>    */}
+
+    &nbsp; &nbsp; <Button className = "btn hireme-btn" onClick = {(e) => handleParse(e)}> Parse CSV </Button>
 
     <div style={{ marginTop: "3rem" }}>
         {error ? error : data.map((col, idx) => <div key={idx}>{col}</div>)}
@@ -146,16 +156,25 @@ function SearchBar() {
     />
 
     <input className = 'search-autocomplete'
-        type = 'text'
+        type = 'password'
         placeholder = 'Password'
         value = {password}
         onChange = {(e) => handleChangePassword(e)}
 
     />
 
-    <button className="btn-option" onClick={(e) => handleSubmit(e)}>
+    {/* <button className="btn-option" onClick={(e) => handleSubmit(e)}>
       Initiate Search
-    </button>
+    </button> */}
+
+    <br />
+    <br />
+
+    <Button className = "btn hireme-btn" onClick = {(e) => handleSubmit(e)}>
+        Send Emails
+    </Button>
+
+    </center>
 
     </div> 
 

@@ -10,7 +10,8 @@ const PageFormat = () => {
 
                 <p className = "hero-top-data"> Welcome to Mail Hippo </p>
                 <h1 className = "hero-heading"> Mail Hippo </h1>
-                <p className = "hero-para"> Mail Hippo - your one stop solution for head hunting. Test test test test test test test test test test test test test test test </p>
+                <p className = "hero-para"> Mail Hippo - your one stop solution for head hunting and cold emailing. Avail our services to 
+                pull the names and emails of employees from your target company and position. Then, use our Email Send feature to send emails to these people. </p>
 
                 <Button className = "btn hireme-btn">
                     <NavLink to = "/scraper"> Get Started </NavLink>
@@ -19,7 +20,7 @@ const PageFormat = () => {
             </div>
             <div className = "section-hero-image">
                 <picture>
-                    <img src = "./images/hero.svg" className = "hero-img" alt = "hero image" />
+                    <img src = "./images/hippo1.jpg" className = "hero-img" alt = "hero image" />
                 </picture>
             </div>
         </div>

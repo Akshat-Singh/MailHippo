@@ -5,7 +5,6 @@ import SearchBar from './SearchBar';
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Button from 'react-bootstrap/Button'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 export default function Format() {
@@ -50,14 +49,13 @@ export default function Format() {
     }
     
     return (
-        <div className = "App">
-        <header className = "App-header">
-            <h3> Pull email addresses of employees of your preferred firms </h3>
+        <div>
+            <center> 
+                <h3> Pull email addresses of employees of your preferred firms </h3>
+            </center>
+            <br />
+            <br /> 
             <SearchBar/>
-            <p> The email format of the company you have queried is <span style={{color: "#E01E85", fontSize: "150%"}}> </span> </p>
-
-        </header>
-
         </div>
     );
 }

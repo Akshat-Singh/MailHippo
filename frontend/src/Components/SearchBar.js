@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import '../static/SearchBar.css'
+// import '../static/SearchBar.css'
+import '../static/EmailSend.css';
+import { Button } from "../styles/Button.js";
 
 function SearchBar() {
   const [entries, setEntries] = useState([]);
@@ -57,37 +59,48 @@ function SearchBar() {
   if (!entries) return (<h1>Loading....</h1>)
 
   return (
-    <search style={{ margin: "auto", top: "20%", width: "50%", display: "block", alignItems: "center" }}>
+    <div style={{ margin: "auto", top: "20%", width: "50%", display: "block", alignItems: "center" }}>
+
+    <center>
     
-    <input className='search-autocomplete'
+      <input className='search-autocomplete'
+          type='text'
+          placeholder='Search for your target firms here!'
+          value={searchTerm}
+          onChange={handleChange}
+      />
+      
+      <div id="search_box" className="search_results">
+        <ul>
+        {suggestions.map((suggest, index) => {
+          return(
+            <li className="li-suggest"><button className="btn-option" onClick={(e) => handleOnClick(suggest)}>{suggest}</button></li>
+          )
+        })}
+        </ul>
+      </div>
+
+      <input className='search-autocomplete'
         type='text'
-        placeholder='Search for your target firms here!'
-        value={searchTerm}
-        onChange={handleChange}
-    />
-    
-    <div id="search_box" className="search_results">
-      <ul>
-      {suggestions.map((suggest, index) => {
-        return(
-          <li className="li-suggest"><button className="btn-option" onClick={(e) => handleOnClick(suggest)}>{suggest}</button></li>
-        )
-      })}
-      </ul>
-    </div>
+        placeholder='Position in Firm'
+        value={searchPos}
+        onChange={handlePosChange}
+      />
 
-    <input className='search-autocomplete'
-      type='text'
-      placeholder='Position in Firm'
-      value={searchPos}
-      onChange={handlePosChange}
-    />
+      {/* <button className="btn-option" onClick={(e) => handleSubmit(e)}>
+        Initiate Search
+      </button> */}
 
-    <button className="btn-option" onClick={(e) => handleSubmit(e)}>
-      Initiate Search
-    </button>
+      <br />
+      <br />
 
-    </search> 
+        <Button className = "btn hireme-btn" onClick = {(e) => handleSubmit(e)}>
+          Initiate Search
+        </Button>
+
+    </center>
+
+    </div> 
 
   );
 }
