@@ -29,12 +29,12 @@ export default function App() {
                       CSVData.push(['Name', 'Position', 'Organization', 'Email'])
                       for (const ele of res.data) {
                           var format = resp.data["format"]
-                          format = format.replace("{first}", ele['Name'].toLowerCase().replace(".", "").split(" ")[0])
-                          format = format.replace("{last}", ele['Name'].toLowerCase().replace(".", "").split(" ")[1])
-                          format = format.replace("{f}", ele['Name'].toLowerCase().replace(".", "").split(" ")[0][0])
-                          format = format.replace("{l}", ele['Name'].toLowerCase().replace(".", "").split(" ")[1][0])
+                          format = format.replace("{first}", ele['name'].toLowerCase().replace(".", "").split(" ")[0])
+                          format = format.replace("{last}", ele['name'].toLowerCase().replace(".", "").split(" ")[1])
+                          format = format.replace("{f}", ele['name'].toLowerCase().replace(".", "").split(" ")[0][0])
+                          format = format.replace("{l}", ele['name'].toLowerCase().replace(".", "").split(" ")[1][0])
 
-                          CSVData.push([ele['Name'], ele['Position'], ele['Company'], format])
+                          CSVData.push([ele['name'], ele['pos'], ele['org'], format])
                       }
                       setCSV(CSVData)
                       changeStatusCode(200)
