@@ -26,9 +26,9 @@ def pull_person():
 
             else:
                 for item in pulled_names:
-                    org = item["Company"].replace("&", "and")
-                    pos = item["Position"].replace("&", "and")
-                    name = item["Name"].replace("&", "and")
+                    org = item["org"].replace("&", "and")
+                    pos = item["pos"].replace("&", "and")
+                    name = item["name"].replace("&", "and")
                     requests.get("http://172.28.1.4:3001/person_publish?org=" + org + "&pos=" + pos + "&name=" + name)
 
                 return pulled_names

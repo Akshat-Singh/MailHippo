@@ -39,7 +39,7 @@ def scrape_person(org, pos):
             continue
         
         print(response_list)
-        final.append({"Name" : response_list[0], "Position": response_list[1], "Company": response_list[2]})
+        final.append({"name" : response_list[0], "pos": response_list[1], "org": response_list[2]})
     
     return final  
 
